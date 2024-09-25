@@ -6,7 +6,7 @@ import { useSignInUseCase } from '@/features';
 import { LoginSchema, loginSchema } from './schema';
 
 export function LoginPage() {
-  const { signIn } = useSignInUseCase();
+  const { signIn, isLoading, isError } = useSignInUseCase();
   const { register, handleSubmit, formState } = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -48,11 +48,18 @@ export function LoginPage() {
           />
         </fieldset>
         <button
-          disabled={!formState.isValid}
-          className="w-full rounded-md bg-purple-600 p-2 text-white"
+          disabled={!formState.isValid || isLoading}
+          data-isLoading={isLoading}
+          data-disabled={!formState.isValid}
+          className="w-full rounded-md bg-purple-600 p-2 text-white data-[isLoading=true]:animate-bounce data-[disabled=true]:bg-zinc-400"
         >
           Log In
         </button>
+        {isError && (
+          <span className="text-sm text-red-500">
+            Erro ao enviar formulario
+          </span>
+        )}
       </form>
     </div>
   );
