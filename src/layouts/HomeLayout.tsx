@@ -10,14 +10,14 @@ export function HomeLayout() {
   }
 
   return (
-    <div className="h-dvh bg-slate-100">
-      <nav className="h-14 flex items-center justify-between border-b border-slate-200 px-20">
+    <div className="h-dvh bg-zinc-100">
+      <nav className="flex h-14 items-center justify-between border-b border-zinc-200 bg-white px-20">
         <span className="text-4xl font-bold">LOGO</span>
         <div className="flex gap-3">
           <NavLink to="/" className="text-xl">
             Home
           </NavLink>
-          <NavLink to="/login" className="text-xl text-cyan-500">
+          <NavLink to="/login" className="text-xl text-purple-600">
             Login
           </NavLink>
         </div>

@@ -11,12 +11,36 @@ async function signIn(
   email: string,
   password: string,
 ): Promise<AuthCredentialsAPI> {
-  const response = await api.post<AuthCredentialsAPI>('auth/login', {
-    email: email,
-    password: password,
-  });
+  // const response = await api.post<AuthCredentialsAPI>('auth/login', {
+  //   email: email,
+  //   password: password,
+  // });
 
-  return response.data;
+  // return response.data;
+
+  // This is just a test
+  // Change it for a real functionality
+
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (email === 'johndoe@email.com' && password === '123123123') {
+        resolve({
+          auth: {
+            type: 'type',
+            token: 'token',
+            refreshToken: 'refreshToken',
+            expire_at: 'expire_at',
+          },
+          user: {
+            id: 1,
+            email: 'johndoe@email.com',
+          },
+        });
+      }
+
+      reject('Invalid user');
+    }, 5000);
+  });
 }
 
 async function signOut(): Promise<string> {
