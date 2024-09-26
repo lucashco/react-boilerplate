@@ -1,50 +1,110 @@
-# React + TypeScript + Vite
+## Project Structure Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This document provides an overview of the project structure, outlining the organization of directories and files within the application.
 
-Currently, two official plugins are available:
+### About project
+It is a  ReBoilerplate project created by Vite JS.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### How to run
+To install dependecies run:
+```sh
+ $ yarn
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+To run on dev run:
+```sh
+ $ yarn dev
 ```
+
+## Folder structures
+
+### `api`
+
+The `api` directory holds configuration files for the client http configuration.
+
+- **`@api/`**
+  - `apiConfig.ts`: Axios configuration.
+  - **`index.ts`**: Exports modules from the `api` directory.
+
+### `assets`
+
+The `assets` directory contains shared assets used across modules.
+
+- **`fonts/`**: Reusable fonts.
+  - _(Structure similar to `src/fonts/`)_
+- **`images/`**: Shared images.
+  - _(Structure similar to `src/images/`)_
+
+### `components`
+
+The `components` directory contains shared components used across modules.
+
+### `features`
+
+The `features` directory contains domain-specific logic and services.
+
+- **`@featureName`**
+  - **`useCases/`**: Use cases or domain-specific logic.
+    - `use[hookName].ts`: Use case implementation.
+  - `api.ts`: API service configuration.
+  - `services.ts`: Domain-specific services.
+  - `types.ts`: TypeScript types relevant to the domain.
+  - **`index.ts`**: Exports modules from the `feature` directory.
+
+### `hooks`
+
+The `hooks` directory contains shared hooks used across modules.
+
+- **`@hooks/`**
+  - `use[HookName].ts`: Custom hook implementation.
+  - **`index.ts`**: Exports modules from the `hooks` directory.
+
+### `infra`
+
+The `infra` directory is used to globals infra configurations.
+
+- `queryKeys.ts`: Types related to query keys for data fetching.
+- `querClient.ts`: React Query client instance.
+- `mutation.ts`: Types for data mutation.
+
+
+### `layouts`
+
+The `layouts` directory contains shared layouts used across modules.
+
+### `pages`
+
+The `pages` directory contains shared pages used across modules.
+
+- **`@pages/`**
+  - **`Auth`**: Public pages.
+  - **`App`**: Protected pages.
+  - **`index.ts`**: Exports modules from the `pages` directory.
+
+The `router` directory contains shared pages used across modules.
+
+- **`@router/`**
+  - **`router`**: All routes on the app.
+  - **`index.ts`**: Exports modules from the `router` directory.
+
+### `services`
+
+The `services` directory contains shared services used across modules.
+
+- **`@services/`**
+  - `[ServiceFolder]`: Folder for a service, global state, custom providers, native resources and so on.
+    - `[ServiceName].ts`: File that has service implementation.
+    - `[ServiceTypes].ts`: Useful types for the service.
+    - `[ServiceProvider].ts`: If necessary for any service.
+    - `[useServiceName].ts`: To conect any service with UI.
+    - **`index.ts`**: Exports service from the `service folder` directory.
+
+  - **`index.ts`**: Exports modules from the `services` directory.
+
+### `types`
+
+The `types` directory is used to globals types.
+
+---
+
+This structured breakdown provides a clear understanding of how different aspects of the application are organized within the directory tree, helping developers navigate and maintain the codebase effectively.
