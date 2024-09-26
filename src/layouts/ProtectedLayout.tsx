@@ -11,7 +11,7 @@ export function ProtectedLayout() {
 
   return (
     <div className="h-dvh bg-slate-100">
-      <nav className="h-14 flex items-center justify-between border-b border-slate-200 px-20">
+      <nav className="flex h-14 items-center justify-between border-b border-slate-200 px-20">
         <span className="text-2xl font-bold">Bem vindo</span>
         <div className="flex gap-3">
           <NavLink to="/" className="text-xl">
