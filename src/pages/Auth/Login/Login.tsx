@@ -1,22 +1,22 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import {zodResolver} from '@hookform/resolvers/zod'
+import {useForm} from 'react-hook-form'
 
-import { useSignInUseCase } from '@/features';
+import {useSignInUseCase} from '@/features'
 
-import { LoginSchema, loginSchema } from './schema';
+import {LoginSchema, loginSchema} from './schema'
 
 export function LoginPage() {
-  const { signIn, isLoading, isError } = useSignInUseCase();
-  const { register, handleSubmit, formState } = useForm<LoginSchema>({
+  const {signIn, isLoading, isError} = useSignInUseCase()
+  const {register, handleSubmit, formState} = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
       email: 'johndoe@email.com',
       password: '123123123',
     },
-  });
+  })
 
   function handleSignIn(data: LoginSchema) {
-    signIn({ email: data.email, password: data.password });
+    signIn({email: data.email, password: data.password})
   }
 
   return (
@@ -62,5 +62,5 @@ export function LoginPage() {
         )}
       </form>
     </div>
-  );
+  )
 }

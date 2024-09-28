@@ -3,15 +3,19 @@
 This document provides an overview of the project structure, outlining the organization of directories and files within the application.
 
 ### About project
-It is a  ReBoilerplate project created by Vite JS.
+
+It is a ReBoilerplate project created by Vite JS.
 
 ### How to run
+
 To install dependecies run:
+
 ```sh
  $ yarn
 ```
 
 To run on dev run:
+
 ```sh
  $ yarn dev
 ```
@@ -67,7 +71,6 @@ The `infra` directory is used to globals infra configurations.
 - `querClient.ts`: React Query client instance.
 - `mutation.ts`: Types for data mutation.
 
-
 ### `layouts`
 
 The `layouts` directory contains shared layouts used across modules.
@@ -92,7 +95,9 @@ The `router` directory contains shared pages used across modules.
 The `services` directory contains shared services used across modules.
 
 - **`@services/`**
+
   - `[ServiceFolder]`: Folder for a service, global state, custom providers, native resources and so on.
+
     - `[ServiceName].ts`: File that has service implementation.
     - `[ServiceTypes].ts`: Useful types for the service.
     - `[ServiceProvider].ts`: If necessary for any service.

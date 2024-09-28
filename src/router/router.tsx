@@ -2,11 +2,11 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-} from 'react-router-dom';
+} from 'react-router-dom'
 
-import { HomeLayout } from '@/layouts';
-import { ProtectedLayout } from '@/layouts/ProtectedLayout';
-import { HomePage, LoginPage, ProfilePage, RegisterPage } from '@/pages';
+import {HomeLayout} from '@/layouts'
+import {ProtectedLayout} from '@/layouts/ProtectedLayout'
+import {HomePage, LoginPage, ProfilePage, RegisterPage} from '@/pages'
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,6 +20,6 @@ export const router = createBrowserRouter(
       <Route path="/dashboard" element={<ProtectedLayout />}>
         <Route path="profile" element={<ProfilePage />} />
       </Route>
-    </>,
-  ),
-);
+    </>
+  )
+)

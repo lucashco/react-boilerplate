@@ -1,2 +1,2 @@
-export * from './storage';
-export * from './implementation/localStorage';
+export * from './storage'
+export * from './implementation/localStorage'
