@@ -1,12 +1,12 @@
-import { Navigate, NavLink, Outlet } from 'react-router-dom';
+import {Navigate, NavLink, Outlet} from 'react-router-dom'
 
-import { useAuthCredentials } from '@/services';
+import {useAuthCredentials} from '@/services'
 
 export function HomeLayout() {
-  const { userId } = useAuthCredentials();
+  const {userId} = useAuthCredentials()
 
   if (userId) {
-    return <Navigate to="/dashboard/profile" replace />;
+    return <Navigate to="/dashboard/profile" replace />
   }
 
   return (
@@ -24,5 +24,5 @@ export function HomeLayout() {
       </nav>
       <Outlet />
     </div>
-  );
+  )
 }

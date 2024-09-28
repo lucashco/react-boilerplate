@@ -1,4 +1,4 @@
-export * from './authTypes';
-export * from './authService';
+export * from './authTypes'
+export * from './authService'
 
-export * from './useCases/useSignInUseCase';
+export * from './useCases/useSignInUseCase'

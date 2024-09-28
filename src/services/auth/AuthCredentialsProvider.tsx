@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { createContext, useState } from 'react';
+import React, {useEffect} from 'react'
+import {createContext, useState} from 'react'
 
-import { registerInterceptor } from '@/api';
-import { AuthCredentials, authService } from '@/features';
+import {registerInterceptor} from '@/api'
+import {AuthCredentials, authService} from '@/features'
 
-import { authCredentialsStorage } from './authCredentialsStorage';
-import { AuthCredentialsService } from './authCredentialsTypes';
+import {authCredentialsStorage} from './authCredentialsStorage'
+import {AuthCredentialsService} from './authCredentialsTypes'
 
 export const AuthCredentialsContext = createContext<AuthCredentialsService>({
   authCredentials: null,
@@ -13,56 +13,56 @@ export const AuthCredentialsContext = createContext<AuthCredentialsService>({
   userId: null,
   saveCredentials: async () => {},
   removeCredentials: async () => {},
-});
+})
 
-export function AuthCredentialsProvider({ children }: React.PropsWithChildren) {
+export function AuthCredentialsProvider({children}: React.PropsWithChildren) {
   const [authCredentials, setAuthCredentials] =
-    useState<AuthCredentials | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+    useState<AuthCredentials | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   async function startAuthCredentials() {
     try {
-      const credentials = await authCredentialsStorage.get();
+      const credentials = await authCredentialsStorage.get()
 
       if (credentials) {
-        authService.updateToken(credentials.token);
-        setAuthCredentials(credentials);
+        authService.updateToken(credentials.token)
+        setAuthCredentials(credentials)
       }
     } catch (e: unknown) {
-      console.log(e);
-      setAuthCredentials(null);
+      console.log(e)
+      setAuthCredentials(null)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
   }
 
   async function saveCredentials(ac: AuthCredentials) {
-    authService.updateToken(ac.token);
-    authCredentialsStorage.set(ac);
-    setAuthCredentials(ac);
+    authService.updateToken(ac.token)
+    authCredentialsStorage.set(ac)
+    setAuthCredentials(ac)
   }
 
   async function removeCredentials() {
-    authService.removeToken();
-    authCredentialsStorage.remove();
-    setAuthCredentials(null);
+    authService.removeToken()
+    authCredentialsStorage.remove()
+    setAuthCredentials(null)
   }
 
   useEffect(() => {
-    startAuthCredentials();
-  }, []);
+    startAuthCredentials()
+  }, [])
 
   useEffect(() => {
     const interceptor = registerInterceptor({
       authCredentials,
       removeCredentials,
       saveCredentials,
-    });
+    })
 
-    return interceptor;
-  }, [authCredentials]);
+    return interceptor
+  }, [authCredentials])
 
-  const userId = authCredentials?.user.id || null;
+  const userId = authCredentials?.user.id || null
 
   return (
     <AuthCredentialsContext.Provider
@@ -76,5 +76,5 @@ export function AuthCredentialsProvider({ children }: React.PropsWithChildren) {
     >
       {children}
     </AuthCredentialsContext.Provider>
-  );
+  )
 }

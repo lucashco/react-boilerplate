@@ -1,19 +1,19 @@
-import { StorageService } from '../storage';
+import {StorageService} from '../storage'
 
 export const localStorageImp: StorageService = {
   getItem: async (key) => {
-    const item = localStorage.getItem(key);
+    const item = localStorage.getItem(key)
 
     if (item) {
-      return JSON.parse(item);
+      return JSON.parse(item)
     }
 
-    return null;
+    return null
   },
   setItem: async (key, value) => {
-    localStorage.setItem(key, JSON.stringify(value));
+    localStorage.setItem(key, JSON.stringify(value))
   },
   removeItem: async (key) => {
-    localStorage.removeItem(key);
+    localStorage.removeItem(key)
   },
-};
+}

@@ -1,42 +1,42 @@
-import { api } from '@/api';
+import {api} from '@/api'
 
-import { authAdapter } from './authAdapter';
-import { authApi } from './authApi';
-import { AuthCredentials, SignUpData } from './authTypes';
+import {authAdapter} from './authAdapter'
+import {authApi} from './authApi'
+import {AuthCredentials, SignUpData} from './authTypes'
 
 async function signIn(
   email: string,
-  password: string,
+  password: string
 ): Promise<AuthCredentials> {
-  const authCredentialsAPI = await authApi.signIn(email, password);
+  const authCredentialsAPI = await authApi.signIn(email, password)
 
-  return authAdapter.toAuthCredentials(authCredentialsAPI);
+  return authAdapter.toAuthCredentials(authCredentialsAPI)
 }
 
 async function signOut(): Promise<string> {
-  const message = await authApi.signOut();
+  const message = await authApi.signOut()
 
-  return message;
+  return message
 }
 
 async function singUp(signUpData: SignUpData): Promise<void> {
-  await authApi.singUp(signUpData);
+  await authApi.singUp(signUpData)
 }
 
 function updateToken(token: string) {
-  api.defaults.headers.common.Authorization = `Bearer ${token}`;
+  api.defaults.headers.common.Authorization = `Bearer ${token}`
 }
 
 function removeToken() {
-  api.defaults.headers.common.Authorization = null;
+  api.defaults.headers.common.Authorization = null
 }
 
 async function authenticateByRefreshToken(
-  refreshToken: string,
+  refreshToken: string
 ): Promise<AuthCredentials> {
-  const acAPI = await authApi.refreshToken(refreshToken);
+  const acAPI = await authApi.refreshToken(refreshToken)
 
-  return authAdapter.toAuthCredentials(acAPI);
+  return authAdapter.toAuthCredentials(acAPI)
 }
 
 export const authService = {
@@ -47,4 +47,4 @@ export const authService = {
   removeToken,
   authenticateByRefreshToken,
   isRefreshTokenRequest: authApi.isRefreshTokenRequest,
-};
+}

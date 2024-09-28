@@ -22,8 +22,9 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"],
-      "@routes/*": ["src/router/*"],
+      "@routes/*": ["src/router/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

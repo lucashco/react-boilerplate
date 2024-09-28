@@ -1,2 +1,2 @@
-export * from './HomeLayout';
-export * from './ProtectedLayout';
+export * from './HomeLayout'
+export * from './ProtectedLayout'

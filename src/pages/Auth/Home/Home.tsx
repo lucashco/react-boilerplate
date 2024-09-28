@@ -11,5 +11,5 @@ export function HomePage() {
         </p>
       </div>
     </div>
-  );
+  )
 }

@@ -1,12 +1,12 @@
-import { Navigate, NavLink, Outlet } from 'react-router-dom';
+import {Navigate, NavLink, Outlet} from 'react-router-dom'
 
-import { useAuthCredentials } from '@/services';
+import {useAuthCredentials} from '@/services'
 
 export function ProtectedLayout() {
-  const { userId } = useAuthCredentials();
+  const {userId} = useAuthCredentials()
 
   if (!userId) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/" replace />
   }
 
   return (
@@ -21,5 +21,5 @@ export function ProtectedLayout() {
       </nav>
       <Outlet />
     </div>
-  );
+  )
 }
